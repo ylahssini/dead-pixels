@@ -66,6 +66,18 @@ p {
   padding-top: 100%;
   height: 100%;
   border-radius: 4px;
+  position: relative;
+}
+
+.screens > li:after {
+  background-color: #000;
+  content: "";
+  height: 1px;
+  width: 1px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .screens > li:nth-of-type(1) {
@@ -86,4 +98,31 @@ p {
 
 .screens > li:nth-of-type(5) {
   background-color: rgb(0, 0, 255);
+}
+
+.screens > li:nth-of-type(1):after {
+  background-color: pink;
+  top: 40%;
+  left: 40%;
+}
+
+.screens > li:nth-of-type(2):after {
+  background-color: cyan;
+  top: 50%;
+  left: 70%;
+}
+
+.screens > li:nth-of-type(3):after {
+  top: 60%;
+  left: 50%;
+}
+
+.screens > li:nth-of-type(4):after {
+  top: 50%;
+  left: 80%;
+}
+
+.screens > li:nth-of-type(5):after {
+  top: 70%;
+  left: 50%;
 }
