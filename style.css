@@ -7,7 +7,10 @@
 }
 
 :root {
-  --font: "Nanum gothic", sans-serif;
+  --font: "Silkscreen", sans-serif;
+  --ease: cubic-bezier(0.23, 1, 0.320, 1);
+  --shadow-button: -3px -10px 20px #fff, -3px -5px 10px #fff, -10px 0 20px #fff, 3px 5px 15px rgba(0, 0, 0, .2);
+  --shadow-content: inset 0 -4px 0 #ddd, 0 -4px 0 #f6f7f0;
 }
 
 button {
@@ -40,8 +43,87 @@ a:hover {
   color: darkred;
 }
 
+@keyframes animate_title {
+  from {
+    filter: blur(2px);
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  
+  to {
+    filter: blur(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes animate_button {
+  0% {
+    opacity: 0;
+    border-color: transparent;
+    transform: translateY(2rem);
+    box-shadow: none;
+  }
+  
+  50% {
+    transform: translateY(0);
+  }
+  
+  100% {
+    border-color: #c7c6c0;
+    box-shadow: var(--shadow-button);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animate_button_content {
+  from {
+    filter: blur(0.5px);
+    box-shadow: none;
+    line-height: 45px;
+  }
+  
+  to {
+    filter: blur(0);
+    box-shadow: var(--shadow-content);
+    line-height: 35px;
+  }
+}
+
+@keyframes animate_paragraph {
+  from {
+    filter: blur(2px);
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animate_screen {
+  from {
+    filter: blur(2px);
+    scale: 0;
+    opacity: 0;
+  }
+  
+  to {
+    filter: blur(0);
+    scale: 1;
+    opacity: 1;
+  }
+}
+
 h1 {
-  font-weight: 800;
+  font-weight: 700;
+  text-align: center;
+  padding: 0 0 1rem;
+  animation: animate_title 1.5s var(--ease) 0s 1 backwards;
 }
 
 main {
@@ -50,6 +132,7 @@ main {
 }
 
 p {
+  animation: animate_paragraph 1.5s var(--ease) .2s 1 backwards;
   font-size: .8rem;
   padding: 0 0 1rem;
 }
@@ -81,22 +164,27 @@ p {
 }
 
 .screens > li:nth-of-type(1) {
+  animation: animate_screen 1.5s var(--ease) .2s 1 backwards;
   background-color: rgb(255, 255, 255);
 }
 
 .screens > li:nth-of-type(2) {
+  animation: animate_screen 1.5s var(--ease) .3s 1 backwards;
   background-color: rgb(0, 0, 0);
 }
 
 .screens > li:nth-of-type(3) {
+  animation: animate_screen 1.5s var(--ease) .4s 1 backwards;
   background-color: rgb(255, 0, 0);
 }
 
 .screens > li:nth-of-type(4) {
+  animation: animate_screen 1.5s var(--ease) .5s 1 backwards;
   background-color: rgb(0, 255, 0);
 }
 
 .screens > li:nth-of-type(5) {
+  animation: animate_screen 1.5s var(--ease) .6s 1 backwards;
   background-color: rgb(0, 0, 255);
 }
 
@@ -128,29 +216,32 @@ p {
 }
 
 button {
+  animation: animate_button 1.5s var(--ease) 1s 1 backwards;
   border: 2px solid #c7c6c0;
   cursor: pointer;
   display: block;
-  font-weight: 800;
+  font: 700 0.8rem var(--font);
   margin: 0 auto;
   padding: 0;
   height: 45px;
   width: fit-content;
   outline: 0;
   border-radius: 10px;
-  box-shadow: -3px -10px 25px #fff, -3px -5px 10px #fff, -10px 0 20px #fff, 3px 5px 15px rgba(0, 0, 0, .2);
-  transition: all .15s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: var(--shadow-button);
+  transition: all .15s var(--ease);
 }
 
 button > span {
+  animation: animate_button_content 1s var(--ease) 1.5s 1 backwards;
   display: block;
   height: 100%;
   line-height: 35px;
   width: 100%;
   padding: 0 1rem;
   border-radius: 8px;
-  box-shadow: inset 0 -4px 0 #ddd, 0 -4px 0 #f6f7f0;
-  transition: all .15s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: var(--shadow-content);
+  transition: all .15s var(--ease);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .9);
 }
 
 button:active {
