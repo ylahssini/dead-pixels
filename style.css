@@ -159,6 +159,7 @@ footer {
 
 .paragraph > strong {
   color: black;
+  font-weight: 700;
 }
 
 .screens {
