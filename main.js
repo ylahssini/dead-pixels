@@ -39,7 +39,17 @@ fullscreen.addEventListener('click', () => {
       break;
     }
   }
+
+  document.documentElement.focus();
 });
+
+document.addEventListener('keydown', (event) => {
+  const { key } = event;
+
+  if (key === ' ') {
+    fullscreen.click();
+  }
+})
 
 document.addEventListener('fullscreenerror', () => {
   alert('The fullscreen is not supported!');
