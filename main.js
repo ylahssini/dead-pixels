@@ -5,28 +5,8 @@ const element = document.documentElement;
 
 const colors = ['white', 'black', 'red', 'green', 'blue'];
 
-function detectDoubleTapClosure() {
-  let lastTap = 0;
-  let timeout;
-
-  return function detectDoubleTap(event) {
-    const curTime = new Date().getTime();
-    const tapLen = curTime - lastTap;
-    if (tapLen < 500 && tapLen > 0) {
-      if (callback) {
-        callback();
-      }
-      event.preventDefault();
-    } else {
-      timeout = setTimeout(() => {
-        clearTimeout(timeout);
-      }, 500);
-    }
-    lastTap = curTime;
-  };
-}
-
 startTesting.addEventListener('click', () => {
+  fullscreen.classList.add('__white');
   if (element.requestFullscreen) {
     element.requestFullscreen();
     return true;
@@ -46,5 +26,21 @@ startTesting.addEventListener('click', () => {
 });
 
 fullscreen.addEventListener('click', () => {
-  
+  for (let i = 0; i < colors.length; i += 1) {
+    const color = `__${colors[i]}`;
+    
+    if (i === colors.length - 1) {
+      fullscreen.classList.replace(color, `__${colors[0]}`);
+      break;
+    }
+    
+    if (fullscreen.className.includes(color)) {
+      fullscreen.classList.replace(color, `__${colors[i + 1]}`);
+      break;
+    }
+  }
+});
+
+document.addEventListener('fullscreenerror', () => {
+  alert('The fullscreen is not supported!');
 });
