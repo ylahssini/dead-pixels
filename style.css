@@ -79,13 +79,11 @@ a:hover {
 
 @keyframes animate_button_content {
   from {
-    filter: blur(0.5px);
     box-shadow: none;
     line-height: 45px;
   }
   
   to {
-    filter: blur(0);
     box-shadow: var(--shadow-content);
     line-height: 35px;
   }
@@ -129,6 +127,12 @@ h1 {
 main {
   margin: 0 auto;
   width: 300px;
+  position: relative;
+  z-index: 2;
+}
+
+:fullscreen main {
+  display: none;
 }
 
 p {
@@ -251,4 +255,40 @@ button:active {
 button:active > span {
   box-shadow: none;
   line-height: 45px;
+}
+
+:fullscreen .fullscreen {
+  opacity: 1;
+}
+
+.fullscreen {
+  background-color: transparent;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100vh;
+  height: 100vh;
+  transition: all .3s var(--ease);
+}
+
+.fullscreen.__white {
+  background-color: rgb(255, 255, 255);
+}
+
+.fullscreen.__black {
+  background-color: rgb(0, 0, 0);
+}
+
+.fullscreen.__red {
+  background-color: rgb(255, 0, 0);
+}
+
+.fullscreen.__green {
+  background-color: rgb(0, 255, 0);
+}
+
+.fullscreen.__blue {
+  background-color: rgb(0, 0, 255);
 }
