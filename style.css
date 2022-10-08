@@ -49,6 +49,11 @@ a:hover {
   color: darkred;
 }
 
+::selection {
+  color: orange;
+  background-color: transparent;
+}
+
 @keyframes animate_title {
   from {
     filter: blur(2px);
